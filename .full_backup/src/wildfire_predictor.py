@@ -17,4 +17,11 @@ def synthesize(n=2000):
     y = (prob > 0.5).astype(int)
     X = pd.DataFrame({"temp":temp,"humidity":humidity,"wind":wind,"dryness":dryness})
     return X, y
-
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--train", action="store_true")
+    ap.add_argument("--evaluate", action="store_true")
+    args = ap.parse_args()
+    X, y = synthesize()
+    Xtr, Xte, ytr, yte = train_test_split(X, y, test_size=0.25, stratify=y, random_state=42)
