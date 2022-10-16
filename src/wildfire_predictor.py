@@ -24,4 +24,11 @@ def main():
     ap.add_argument("--evaluate", action="store_true")
     args = ap.parse_args()
     X, y = synthesize()
-    Xtr, Xte, ytr, yte = train_test_split(X, y, test_size=0.25, stratify=y, random_state=42)
+    Xtr, Xte, ytr, yte = train_test_split(X, y, test_size=0.25, stratify=y, random_state=42)
+    clf = RandomForestClassifier(n_estimators=200, random_state=42)
+    if args.train:
+        clf.fit(Xtr, ytr)
+    if args.evaluate:
+        if len(clf.feature_importances_)==0:
+            clf.fit(Xtr, ytr)
+        pred = clf.predict_proba(Xte)[:,1]

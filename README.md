@@ -9,4 +9,7 @@ outputs a simple risk score. It demonstrates ML workflow hygiene (reproducibilit
 Run:
 ```bash
 cd src
-pip install -r requirements.txt
+pip install -r requirements.txt
+python3 wildfire_predictor.py --train --evaluate
+```
+
