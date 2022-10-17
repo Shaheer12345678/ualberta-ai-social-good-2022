@@ -31,4 +31,10 @@ def main():
     if args.evaluate:
         if len(clf.feature_importances_)==0:
             clf.fit(Xtr, ytr)
-        pred = clf.predict_proba(Xte)[:,1]
+        pred = clf.predict_proba(Xte)[:,1]
+        auc = roc_auc_score(yte, pred)
+        print("AUC:", round(auc, 4))
+        print(classification_report(yte, (pred>0.5).astype(int)))
+if __name__ == "__main__":
+    main()
+

@@ -12,4 +12,7 @@ cd src
 pip install -r requirements.txt
 python3 wildfire_predictor.py --train --evaluate
 ```
-
+
+**Links (background):**
+- Event page: `https://www.amii.ca/latest-from-amii/ai-for-social-good-hackathon-returns-in-2022`
+
